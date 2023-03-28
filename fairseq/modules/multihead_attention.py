@@ -340,7 +340,16 @@ class MultiheadAttention(nn.Module):
             if self.onnx_trace:
                 attn_mask = attn_mask.repeat(attn_weights.size(0), 1, 1)
             attn_weights += attn_mask
-
+            
+            print()
+            print("inside MHA")
+            print("attn_mask shape")
+            print(attn_mask.shape)
+            print()
+            print("attn_mask first head")
+            print(attn_mask[0])
+            print()
+            
         if key_padding_mask is not None:
             # don't attend to padding symbols
             attn_weights = attn_weights.view(bsz, self.num_heads, tgt_len, src_len)
