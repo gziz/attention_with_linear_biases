@@ -1020,6 +1020,9 @@ class TransformerDecoder(FairseqIncrementalDecoder):
                 utils.fill_with_neg_inf(torch.zeros([self.args.tokens_per_sample, self.args.tokens_per_sample])), 1
             )
             self._future_mask = self._future_mask.unsqueeze(0) + self.alibi
+            print(self.alibi[0])
+            print(self.alibi.shape)
+            
         self._future_mask = self._future_mask.to(tensor)
         return self._future_mask[:tensor.shape[0]*self.args.decoder_attention_heads, :dim, :dim]
 
