@@ -141,10 +141,14 @@ class MultiheadAttention(nn.Module):
                 weights for each head. Implies *need_weights*. Default:
                 return the average attention weights over all heads.
         """
-        print('running MHA forward')
-        print('with the attn_mask (first head): ')
-        print(attn_mask[0])
+        print('Inside MHA forward')
+        print("Attn_mask shape: ")
+        print(attn_mask.shape)
         
+        print()
+        
+        print("Attn_mask for first head: ")
+        print(attn_mask[0])
         
         if need_head_weights:
             need_weights = True
